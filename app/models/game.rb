@@ -1,19 +1,18 @@
 # == Schema Information
 #
-# Table name: guesses
+# Table name: games
 #
 #  id         :integer          not null, primary key
+#  name       :string
 #  image_id   :integer
-#  user_id    :integer
-#  text       :string
-#  correct    :boolean
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Guess < ApplicationRecord
-  belongs_to :game
-  belongs_to :user
+class Game < ApplicationRecord
+  belongs_to :image
+  has_many :guesses
+  has_many :users, through: :guesses
 
-  validates :text, presence: true
+  
 end

@@ -12,5 +12,10 @@
 
 class Image < ApplicationRecord
   belongs_to :category
-  has_many :guesses
+  has_many :games
+  has_many :guesses, through: :games
+
+  validates :url, presence: true
+  validates :answer, presence: true
+
 end
