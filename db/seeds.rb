@@ -6,8 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-g = Game.create(name: "Test Game")
+g1 = Game.create(name: "Test Game1")
+g2 = Game.create(name: "Test Game2")
+g3 = Game.create(name: "Test Game3")
 c = Category.create(name: "animals")
-img = Image.create(url: "http://imgur.com/8LnMbLs", answer: "rdj")
+img = Image.create(url: "http://imgur.com/8LnMbLs.png", answer: "rdj")
+img2 = Image.create(url: "https://cdn.pixabay.com/photo/2017/01/16/19/17/horses-1984977_1280.jpg", answer: "horses")
+img3 = Image.create(url: "https://cdn.pixabay.com/photo/2015/07/09/22/50/bear-838688_1280.jpg", answer: "bear")
 c.images << img
-img.games << g
+c.images << img2
+c.images << img3
+img.games << g1
+img.games << g2
+img.games << g3
