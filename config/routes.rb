@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get "/category", to: "categories#random_image"
   post "/validate_guess", to: "guesses#validate"
+  post "/handle_comment", to: "comments#handle_comment"
 
   # resources :guesses, only: [:update]
   # resources :categories, only: [:index, :show, :create, :update, :destroy] do
