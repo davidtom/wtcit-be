@@ -1,7 +1,5 @@
 class GuessesController < ApplicationController
 
-
-
   def create
     @guess = Guess.new(guess_params(:game_id, :text))
     @user = User.find_or_create_by(name: params[:user][:name])

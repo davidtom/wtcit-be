@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170802142259) do
   end
 
   create_table "guesses", force: :cascade do |t|
-    t.integer "image_id"
+    t.integer "game_id"
     t.integer "user_id"
     t.string "text"
     t.boolean "correct"
