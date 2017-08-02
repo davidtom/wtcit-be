@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # post "/validate_guess", to: "guesses#validate"
   resources :guesses, only: [:create]
 
+  resources :images, only: [:create]
+
   # resources :guesses, only: [:update]
   # resources :categories, only: [:index, :show, :create, :update, :destroy] do
   #   resources :images, only: [:index, :show, :create, :update, :destroy]
