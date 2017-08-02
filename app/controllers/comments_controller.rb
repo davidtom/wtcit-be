@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   def handle_comment
-    @comment = Comment.new(comment_params(:game_id, :text))
+    @comment = Comment.new(comment_params(:text))
     @user = User.find_or_create_by(name: params[:user][:name])
     @user.comments << @comment
     @comment.save
@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
   private
     def comment_params(*args)
-      params.require(:guess).permit(*args)
+      params.require(:comment).permit(*args)
     end
 
 end
