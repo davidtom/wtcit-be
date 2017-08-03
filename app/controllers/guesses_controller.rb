@@ -1,15 +1,17 @@
 class GuessesController < ApplicationController
 
   def create
-    @guess = Guess.new(guess_params(:game_id, :text))
-    @user = User.find_or_create_by(name: params[:user][:name])
-    @user.guesses << @guess
-    render json: @guess
+    game = Game.find(params[:game][:id])
+    user = User.find_or_create_by(name: params[:userName])
+    guess = Guess.create(game_id: game.id, user_id: user.id, text: guess_text)
+    user.guesses << guess
+    game.update(complete: guess.correct)
+    render json: { guess: guess, user: user, game: game }
   end
 
   private
-    def guess_params(*args)
-      params.require(:guess).permit(*args)
+    def guess_text
+      params.require(:guessText)
     end
 
 end
