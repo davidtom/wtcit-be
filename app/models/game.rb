@@ -13,6 +13,8 @@ class Game < ApplicationRecord
   belongs_to :image
   has_many :guesses
   has_many :users, through: :guesses
+  has_many :comments
+  has_many :users, through: :comments
 
-  
+
 end

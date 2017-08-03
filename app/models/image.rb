@@ -15,7 +15,7 @@ class Image < ApplicationRecord
   has_many :games
   has_many :guesses, through: :games
 
-  validates :url, presence: true
+  validates :url, presence: true, uniqueness: true
   validates :answer, presence: true
 
 end
