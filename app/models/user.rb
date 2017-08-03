@@ -16,4 +16,10 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  before_validation :assign_anonymous
+
+  def assign_anonymous
+    self.name = "anonymous" if self.name.blank?
+  end
+
 end
