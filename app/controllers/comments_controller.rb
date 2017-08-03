@@ -1,16 +1,11 @@
 class CommentsController < ApplicationController
 
-  def handle_comment
-    @comment = Comment.new(comment_params(:text))
-    @user = User.find_or_create_by(name: params[:user][:name])
-    @user.comments << @comment
-    @comment.save
-    render json: @comment
+  def create
+    game = Game.find(params[:game][:id])
+    user = User.find_or_create_by(name: params[:userName])
+    comment = Comment.create(game_id: game.id, user_id: user.id, text: params[:commentText])
+    user.comments << comment
+    render json: { comment: comment, user: user, game: game }
   end
-
-  private
-    def comment_params(*args)
-      params.require(:comment).permit(*args)
-    end
 
 end
