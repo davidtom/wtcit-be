@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get "/categories/images", to: "categories#image"
   get "/categories", to: "categories#index"
+  get "/users", to: "users#retrieve"
 
   # post "/validate_guess", to: "guesses#validate"
   resources :guesses, only: [:create]
