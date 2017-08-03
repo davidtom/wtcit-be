@@ -15,6 +15,6 @@ class Comment < ApplicationRecord
   belongs_to :game
   belongs_to :user
 
-  validates :text, presence: true
+  validates :text, :user_id, presence: true
 
 end

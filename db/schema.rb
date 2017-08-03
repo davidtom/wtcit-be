@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170802142259) do
 
   create_table "games", force: :cascade do |t|
     t.string "name"
+    t.boolean "complete", default: false
     t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

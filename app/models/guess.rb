@@ -15,7 +15,7 @@ class Guess < ApplicationRecord
   belongs_to :game
   belongs_to :user
 
-  validates :text, presence: true
+  validates :text, :game_id, :user_id, presence: true
 
   before_save :check_guess
 
