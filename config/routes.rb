@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :comments, only: [:create]
   resources :guesses, only: [:create]
 
+  get "/games/current", to: "games#current"
+
 end

@@ -12,12 +12,18 @@
 
 class Game < ApplicationRecord
   belongs_to :image
+
   has_many :guesses
-  has_many :users, through: :guesses
+  has_many :guess_users, through: :guesses, source: :user
+
   has_many :comments
-  has_many :users, through: :comments
+  has_many :comment_users, through: :comments, source: :user
 
   validates :image_id, presence: true
+
+  def self.last_incomplete?
+    !self.last.complete ? self.last : false
+  end
 
 
 end
