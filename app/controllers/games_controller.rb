@@ -9,4 +9,7 @@ class GamesController < ApplicationController
     render json: {image: image, game: game}
   end
 
+  def current
+  end
+
 end
