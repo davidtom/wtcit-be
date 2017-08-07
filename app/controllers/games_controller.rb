@@ -12,15 +12,18 @@ class GamesController < ApplicationController
   def current
     # get all categories from database
     category = Category.order(:name)
-    # check if last game is incomplete; if so return all necessary game data
-    # if Game.last_incomplete?
+    # return all data from the most recent game (either complete or in progress)
       game = Game.last
       image = game.image
-      guess_users = game.guess_users
-      comment_users = game.comment_users
       guesses = game.guesses
-      comments = game.comments
-    # end
+      guess_users = game.guess_users
+      # send last 50 comments made, regardless of which game they were made in
+      comments = Comment.all.last(50)
+      comment_users = User.where(id: comments.pluck(:user_id))
+      # old code for reference:
+      # comments = game.comments
+      # comment_users = game.comment_users
+
     render json: {
       category: category,
       game: game,
